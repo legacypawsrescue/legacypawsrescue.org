@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy Paws Rescue | Fixing the Human Problem. One Dog at a Time.</title>
+<meta name="description" content="Legacy Paws Rescue is a veteran-owned 501(c)(3) nonprofit in Catawba, NC rescuing senior, special-needs, and at-risk dogs. Adopt, donate, foster, or volunteer today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root {
+  --teal:      #2AACB8;
+  --teal-dk:   #1a8a95;
+  --teal-lt:   #e4f7f9;
+  --coral:     #F47C51;
+  --coral-dk:  #d05f37;
+  --coral-lt:  #fef1eb;
+  --navy:      #1D3F52;
+  --navy-mid:  #254e66;
+  --navy-lt:   #e8eef2;
+  --gold:      #d4a843;
+  --gold-lt:   #fdf6e3;
+  --cream:     #faf8f4;
+  --white:     #ffffff;
+  --gray:      #f2f0eb;
+  --gray-mid:  #dedad2;
+  --text:      #1a2530;
+  --muted:     #6b7280;
+  --ff-d:      'Fraunces', Georgia, serif;
+  --ff-b:      'DM Sans', system-ui, sans-serif;
+  --r:         14px;
+  --r-lg:      22px;
+  --sh:        0 2px 20px rgba(29,63,82,.07);
+  --sh-md:     0 4px 32px rgba(29,63,82,.11);
+  --sh-lg:     0 8px 48px rgba(29,63,82,.16);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:var(--ff-b);cursor:pointer;border:none;background:none;}
+
+/* ═══════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════ */
+.inner{max-width:720px;margin:0 auto;padding:0 1.25rem;}
+.inner-wide{max-width:960px;margin:0 auto;padding:0 1.25rem;}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:50px;font-weight:700;font-family:var(--ff-b);transition:all .2s;text-decoration:none;border:none;cursor:pointer;white-space:nowrap;}
+.btn-sm{font-size:12px;padding:8px 18px;}
+.btn-md{font-size:14px;padding:11px 24px;}
+.btn-lg{font-size:15px;padding:14px 30px;}
+.btn-xl{font-size:16px;padding:16px 34px;}
+.btn-coral{background:var(--coral);color:#fff;}
+.btn-coral:hover{background:var(--coral-dk);transform:translateY(-2px);box-shadow:0 6px 24px rgba(244,124,81,.35);}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px);}
+.btn-teal{background:var(--teal);color:#fff;}
+.btn-teal:hover{background:var(--teal-dk);transform:translateY(-2px);}
+.btn-gold{background:var(--gold);color:#fff;}
+.btn-gold:hover{background:#b8922e;transform:translateY(-2px);}
+.btn-outline-w{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45);}
+.btn-outline-w:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-2px);}
+.btn-outline-n{background:transparent;color:var(--navy);border:2px solid var(--navy);}
+.btn-outline-n:hover{background:var(--navy);color:#fff;}
+.btn-ghost-t{background:var(--teal-lt);color:var(--teal-dk);}
+.btn-ghost-t:hover{background:var(--teal);color:#fff;}
+.btn-ghost-c{background:var(--coral-lt);color:var(--coral-dk);}
+.btn-ghost-c:hover{background:var(--coral);color:#fff;}
+
+/* SECTION BASE */
+section{padding:4.5rem 0;}
+.section-kicker{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dk);display:block;margin-bottom:10px;}
+.section-kicker.w{color:rgba(255,255,255,.65);}
+.section-kicker.gold{color:var(--gold);}
+h2.sh{font-family:var(--ff-d);font-size:clamp(1.75rem,5vw,2.4rem);font-weight:900;color:var(--navy);line-height:1.12;letter-spacing:-.02em;margin-bottom:.9rem;}
+h2.sh em{font-style:italic;color:var(--coral);}
+h2.sh.w{color:#fff;}
+h2.sh.w em{color:var(--coral);}
+p.sl{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:1.75rem;}
+p.sl.w{color:rgba(255,255,255,.72);}
+
+/* ═══════════════════════════════════════
+   URGENT BAR
+═══════════════════════════════════════ */
+.urgent-bar{background:var(--coral);color:#fff;padding:10px 1.25rem;text-align:center;font-size:13px;font-weight:600;position:relative;z-index:200;}
+.urgent-bar a{color:#fff;font-weight:800;border-bottom:1px solid rgba(255,255,255,.5);}
+.urgent-bar a:hover{border-color:#fff;}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(29,63,82,.08);height:62px;display:flex;align-items:center;padding:0 1.25rem;gap:1rem;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-logo-ring{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--coral) 40%,var(--teal));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.nav-name{font-family:var(--ff-d);font-size:15px;font-weight:700;color:var(--navy);line-height:1.2;}
+.nav-sub{font-size:10px;font-weight:500;color:var(--teal-dk);letter-spacing:.05em;text-transform:uppercase;display:block;}
+.nav-links{display:flex;gap:1.1rem;align-items:center;}
+.nav-links a{font-size:12px;font-weight:600;color:var(--muted);transition:color .2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--navy);}
+.nav-ctas{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.ham{display:none;flex-direction:column;gap:4.5px;padding:6px;background:none;border:none;cursor:pointer;}
+.ham span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;transition:all .25s;}
+.drawer{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--white);z-index:99;padding:1.5rem 1.25rem;overflow-y:auto;flex-direction:column;}
+.drawer.open{display:flex;}
+.drawer a{font-size:16px;font-weight:600;color:var(--navy);padding:14px 0;border-bottom:1px solid var(--gray);}
+.drawer a:last-of-type{border-bottom:none;}
+.drawer-cta{margin-top:1.5rem;display:flex;flex-direction:column;gap:10px;}
+@media(max-width:680px){.nav-links{display:none;}.ham{display:flex;}.nav-ctas .btn-outline-n{display:none;}}
+@media(min-width:681px){.ham{display:none;}.drawer{display:none !important;}}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{background:var(--navy);min-height:calc(100svh - 100px);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 75% 35%,rgba(42,172,184,.18),transparent 65%),radial-gradient(ellipse 55% 70% at 5% 85%,rgba(244,124,81,.14),transparent 55%);}
+.hero-dots{position:absolute;inset:0;opacity:.028;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:26px 26px;}
+.hero-content{position:relative;z-index:2;padding:3rem 1.25rem 2.5rem;max-width:680px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(42,172,184,.15);border:1px solid rgba(42,172,184,.3);border-radius:50px;padding:5px 16px;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.4rem;}
+.hero-pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(2.5rem,9vw,4.2rem);font-weight:900;color:#fff;line-height:1.04;letter-spacing:-.025em;margin-bottom:1.1rem;}
+.hero-h1 em{font-style:italic;color:var(--coral);}
+.hero-p{font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;max-width:460px;margin-bottom:2rem;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:2.5rem;}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08);}
+.stat-n{font-family:var(--ff-d);font-size:1.9rem;font-weight:900;color:var(--coral);display:block;line-height:1;}
+.stat-l{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+/* floating dog card */
+.hero-dog-float{position:absolute;bottom:2.5rem;right:1.25rem;background:rgba(255,255,255,.08);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:1rem;width:min(210px,calc(100% - 2.5rem));z-index:3;animation:float 3.5s ease-in-out infinite;display:none;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+@media(min-width:540px){.hero-dog-float{display:block;}}
+.float-img{width:100%;height:100px;border-radius:10px;background:linear-gradient(135deg,rgba(42,172,184,.25),rgba(244,124,81,.2));display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:10px;}
+.float-badge{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:rgba(42,172,184,.2);border:1px solid rgba(42,172,184,.35);border-radius:50px;padding:2px 10px;display:inline-block;margin-bottom:6px;}
+.float-name{font-family:var(--ff-d);font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.float-sub{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:8px;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--white);border-bottom:1px solid var(--gray);padding:.85rem 1.25rem;}
+.trust-inner{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem 2rem;}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);}
+
+/* ═══════════════════════════════════════
+   MISSION
+═══════════════════════════════════════ */
+#mission{background:var(--white);}
+.mission-quote{background:var(--navy);border-radius:var(--r-lg);padding:1.75rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.mission-quote::before{content:'\201C';position:absolute;top:-20px;right:10px;font-family:var(--ff-d);font-size:9rem;color:rgba(255,255,255,.04);font-weight:900;line-height:1;pointer-events:none;}
+.mission-quote p{font-family:var(--ff-d);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.82);line-height:1.7;position:relative;}
+.mission-quote strong{color:var(--coral);font-style:normal;}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pillar{background:var(--cream);border-radius:var(--r);padding:1.1rem;border-top:3px solid var(--teal);}
+.pillar.c{border-top-color:var(--coral);}
+.pillar-e{font-size:1.5rem;display:block;margin-bottom:6px;}
+.pillar-h{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.pillar-p{font-size:12px;color:var(--muted);line-height:1.5;}
+@media(min-width:480px){.pillars{grid-template-columns:repeat(4,1fr);}}
+
+/* ═══════════════════════════════════════
+   DOGS
+═══════════════════════════════════════ */
+#dogs{background:var(--cream);}
+/* Dobby spotlight */
+.spotlight{background:var(--navy);border-radius:var(--r-lg);overflow:hidden;position:relative;margin-bottom:1.25rem;}
+.spot-deco{position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:var(--teal);opacity:.07;pointer-events:none;}
+.spot-deco2{position:absolute;bottom:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:var(--coral);opacity:.1;pointer-events:none;}
+.spot-inner{padding:1.75rem;position:relative;z-index:2;}
+.spot-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(244,124,81,.18);border:1px solid rgba(244,124,81,.35);border-radius:50px;padding:4px 13px;font-size:11px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;}
+.spot-pulse{width:6px;height:6px;background:var(--coral);border-radius:50%;animation:pulse 1.5s infinite;}
+.spot-name{font-family:var(--ff-d);font-size:1.7rem;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.1;}
+.spot-breed{font-size:12px;color:rgba(255,255,255,.42);margin-bottom:14px;font-weight:500;}
+.spot-copy{font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:1.25rem;}
+.prog-wrap{margin-bottom:1.25rem;}
+.prog-label{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:rgba(255,255,255,.38);margin-bottom:6px;}
+.prog-bg{background:rgba(255,255,255,.08);border-radius:50px;height:6px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-dk));border-radius:50px;width:0;transition:width 1.8s ease;}
+/* dog cards */
+.dogs-grid{display:flex;flex-direction:column;gap:1.1rem;}
+.dog-card{background:var(--white);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh);display:flex;transition:transform .2s,box-shadow .2s;}
+.dog-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg);}
+.dog-photo{width:115px;flex-shrink:0;background:linear-gradient(135deg,var(--teal-lt),var(--coral-lt));display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;}
+.dog-status{position:absolute;top:8px;left:8px;font-size:9px;font-weight:800;border-radius:50px;padding:2px 8px;letter-spacing:.04em;text-transform:uppercase;}
+.ds-avail{background:#dcf5e0;color:#176a26;}
+.ds-rec{background:var(--coral-lt);color:var(--coral-dk);}
+.ds-adopted{background:var(--teal-lt);color:var(--teal-dk);}
+.dog-info{padding:1rem;flex:1;}
+.dog-name-row{display:flex;align-items:baseline;gap:8px;margin-bottom:2px;}
+.dog-name{font-family:var(--ff-d);font-size:1.15rem;font-weight:700;color:var(--navy);}
+.dog-age{font-size:11px;color:var(--muted);font-weight:500;}
+.dog-breed{font-size:11px;color:var(--muted);margin-bottom:7px;}
+.dog-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.dog-traits{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.trait{background:var(--gray);border-radius:50px;font-size:10px;font-weight:600;color:var(--muted);padding:3px 9px;}
+.view-all{text-align:center;margin-top:1.25rem;}
+.view-all a{font-size:14px;font-weight:700;color:var(--teal-dk);border-bottom:2px solid var(--teal);padding-bottom:2px;}
+
+/* ═══════════════════════════════════════
+   ADOPT
+═══════════════════════════════════════ */
+#adopt{background:var(--white);}
+.steps{display:flex;flex-direction:column;margin:1.5rem 0;}
+.step{display:flex;gap:14px;padding:1.1rem 0;border-bottom:1px solid var(--gray);align-items:flex-start;}
+.step:last-child{border-bottom:none;}
+.step-n{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-h{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.step-p{font-size:13px;color:var(--muted);line-height:1.55;}
+.feyre-quote{background:linear-gradient(135deg,var(--coral-lt),var(--teal-lt));border-radius:var(--r-lg);padding:1.5rem;margin-top:1.5rem;position:relative;}
+.feyre-q{font-family:var(--ff-d);font-size:1.05rem;font-style:italic;color:var(--navy);line-height:1.65;margin-bottom:1rem;}
+.feyre-meta{display:flex;align-items:center;gap:10px;}
+.feyre-avi{width:38px;height:38px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.feyre-who{font-size:13px;font-weight:700;color:var(--navy);display:block;}
+.feyre-detail{font-size:12px;color:var(--muted);}
+.quiz-cta{background:var(--navy);border-radius:var(--r-lg);padding:1.5rem;margin-top:1.5rem;position:relative;overflow:hidden;}
+.quiz-cta::after{content:'🐾';position:absolute;right:1rem;bottom:.25rem;font-size:4rem;opacity:.1;}
+.quiz-h{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.quiz-p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:1rem;}
+
+/* ═══════════════════════════════════════
+   MAGICAL MUTTS
+═══════════════════════════════════════ */
+#magical-mutts{background:linear-gradient(160deg,#1a0a2e 0%,#2a1545 50%,#1D3F52 100%);position:relative;overflow:hidden;}
+#magical-mutts::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,168,67,.12),transparent 60%),radial-gradient(ellipse 40% 40% at 90% 80%,rgba(42,172,184,.12),transparent 55%);}
+.mm-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.mm-stars::before,.mm-stars::after{content:'✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧';position:absolute;color:rgba(255,255,255,.08);font-size:10px;letter-spacing:18px;white-space:nowrap;top:15%;left:-10%;animation:driftStars 30s linear infinite;}
+.mm-stars::after{top:65%;animation-delay:-15s;animation-direction:reverse;}
+@keyframes driftStars{from{transform:translateX(0);}to{transform:translateX(100px);}}
+.mm-inner{position:relative;z-index:2;}
+.mm-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);border-radius:50px;padding:5px 16px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.25rem;}
+.mm-h{font-family:var(--ff-d);font-size:clamp(1.9rem,6vw,3rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.02em;margin-bottom:.8rem;}
+.mm-h em{font-style:italic;color:var(--gold);}
+.mm-p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.75rem;max-width:520px;}
+.mutts-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.75rem 0;}
+@media(min-width:480px){.mutts-grid{grid-template-columns:repeat(4,1fr);}}
+.mutt-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:1.1rem;text-align:center;transition:all .25s;cursor:default;}
+.mutt-card:hover{background:rgba(212,168,67,.12);border-color:rgba(212,168,67,.3);transform:translateY(-4px);}
+.mutt-emoji{font-size:2rem;margin-bottom:8px;display:block;}
+.mutt-name{font-family:var(--ff-d);font-size:1rem;font-weight:700;color:#fff;margin-bottom:3px;}
+.mutt-magic{font-size:11px;color:rgba(255,255,255,.5);line-height:1.4;margin-bottom:6px;}
+.mutt-arch{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);background:rgba(212,168,67,.15);border-radius:50px;padding:2px 10px;display:inline-block;}
+.mm-what{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.mm-what-h{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:10px;}
+.mm-what-list{display:flex;flex-direction:column;gap:7px;}
+.mm-what-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,.72);line-height:1.5;}
+.mm-what-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.mm-launch{background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);border-radius:var(--r);padding:1rem 1.25rem;font-size:13px;color:rgba(255,255,255,.7);margin-top:1.25rem;line-height:1.6;}
+.mm-launch strong{color:var(--gold);}
+.mm-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem;}
+
+/* ═══════════════════════════════════════
+   DONATE
+═══════════════════════════════════════ */
+#donate{background:var(--coral);}
+.donate-inner{position:relative;}
+.donate-opts{display:flex;flex-direction:column;gap:10px;margin:1.5rem 0;}
+.donate-opt{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r-lg);padding:1.25rem;backdrop-filter:blur(6px);}
+.donate-opt-h{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;}
+.donate-opt-p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:12px;}
+.donate-opt-btn{display:inline-block;background:#fff;color:var(--coral-dk);border-radius:50px;padding:9px 20px;font-size:13px;font-weight:700;transition:all .2s;}
+.donate-opt-btn:hover{background:var(--navy);color:#fff;}
+.donate-opt-btn.dark{background:var(--navy);color:#fff;}
+.donate-opt-btn.dark:hover{background:#fff;color:var(--navy);}
+.impact-pills{display:flex;flex-wrap:wrap;gap:8px;margin:1.25rem 0;}
+.impact-pill{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:700;color:#fff;transition:all .2s;text-decoration:none;display:inline-block;}
+.impact-pill:hover{background:#fff;color:var(--coral-dk);}
+/* Dobby banner inside donate */
+.dobby-spot{background:var(--navy);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.25rem;border:2px solid rgba(42,172,184,.25);position:relative;overflow:hidden;}
+.dobby-spot::after{content:'🐾';position:absolute;right:.75rem;bottom:.25rem;font-size:3rem;opacity:.1;}
+.dobby-spot-tag{display:inline-block;background:var(--teal);color:#fff;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;border-radius:50px;padding:3px 12px;margin-bottom:10px;}
+.dobby-spot-h{font-family:var(--ff-d);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3;}
+.dobby-spot-p{font-size:13px;color:rgba(255,255,255,.72);line-height:1.65;margin-bottom:12px;}
+/* paypal fix notice */
+.paypal-notice{background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.3);border-radius:var(--r);padding:1rem 1.25rem;font-size:13px;color:#fff;line-height:1.6;margin-top:1rem;}
+.paypal-notice strong{font-weight:800;}
+.paypal-notice a{color:#fff;border-bottom:1px solid rgba(255,255,255,.5);}
+
+/* ═══════════════════════════════════════
+   RAINBOW BRIDGE
+═══════════════════════════════════════ */
+#rainbow{background:linear-gradient(160deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);position:relative;overflow:hidden;}
+#rainbow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(100,149,237,.15),transparent 60%);}
+.rb-inner{position:relative;z-index:2;}
+.rb-h{font-family:var(--ff-d);font-size:clamp(1.75rem,5vw,2.5rem);font-weight:900;color:#fff;line-height:1.12;margin-bottom:.8rem;}
+.rb-h em{font-style:italic;color:#a8d8f0;}
+.rb-p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.5rem;}
+.rb-features{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:1.5rem;}
+@media(min-width:440px){.rb-features{grid-template-columns:1fr 1fr;}}
+.rb-feat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-lg);padding:1.25rem;}
+.rb-feat-e{font-size:1.5rem;margin-bottom:8px;display:block;}
+.rb-feat-h{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;}
+.rb-feat-p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.55;}
+.chester-memorial{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-left:4px solid #a8d8f0;border-radius:var(--r-lg);padding:1.25rem;margin-top:1.25rem;}
+.chester-q{font-family:var(--ff-d);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:.75rem;}
+.chester-meta{font-size:12px;color:rgba(255,255,255,.45);}
+
+/* ═══════════════════════════════════════
+   HAUNTED TRAIL
+═══════════════════════════════════════ */
+#haunted{background:#0d0d0d;position:relative;overflow:hidden;}
+#haunted::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(244,124,81,.08),transparent 55%);}
+.haunt-inner{position:relative;z-index:2;}
+.haunt-h{font-family:var(--ff-d);font-size:clamp(1.9rem,6vw,3rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.75rem;}
+.haunt-h em{font-style:italic;color:var(--coral);}
+.haunt-p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:1.5rem;}
+.haunt-features{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem;}
+.haunt-feat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:1rem;}
+.haunt-feat-e{font-size:1.3rem;margin-bottom:6px;display:block;}
+.haunt-feat-h{font-size:12px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:2px;}
+.haunt-feat-p{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5;}
+.haunt-date{display:inline-flex;align-items:center;gap:8px;background:rgba(244,124,81,.15);border:1px solid rgba(244,124,81,.3);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:700;color:var(--coral);margin-bottom:1.25rem;}
+
+/* ═══════════════════════════════════════
+   SUCCESS STORIES
+═══════════════════════════════════════ */
+#stories{background:var(--white);}
+.stories-list{display:flex;flex-direction:column;gap:1rem;}
+.story{border-radius:var(--r-lg);background:var(--cream);padding:1.5rem;border-left:4px solid var(--coral);}
+.story.tl{border-left-color:var(--teal);}
+.story.rb{border-left-color:#6495ed;}
+.story-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);display:block;margin-bottom:10px;}
+.story.tl .story-tag{color:var(--teal-dk);}
+.story.rb .story-tag{color:#6495ed;}
+.story-q{font-family:var(--ff-d);font-size:1rem;font-style:italic;color:var(--navy);line-height:1.65;margin-bottom:1rem;}
+.story-meta{display:flex;align-items:center;gap:10px;}
+.story-avi{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.avi-c{background:var(--coral-lt);}
+.avi-t{background:var(--teal-lt);}
+.avi-rb{background:#e8f0ff;}
+.story-who{font-size:13px;font-weight:700;color:var(--navy);display:block;}
+.story-detail{font-size:12px;color:var(--muted);}
+
+/* ═══════════════════════════════════════
+   GET INVOLVED
+═══════════════════════════════════════ */
+#involved{background:var(--cream);}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem;}
+.inv-card{background:var(--white);border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--sh);border-top:3px solid var(--teal);}
+.inv-card.c{border-top-color:var(--coral);}
+.inv-card.g{border-top-color:var(--gold);}
+.inv-e{font-size:1.5rem;margin-bottom:8px;display:block;}
+.inv-h{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.inv-p{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.inv-link{font-size:12px;font-weight:700;color:var(--teal-dk);display:inline-flex;align-items:center;gap:4px;}
+.inv-link.c{color:var(--coral-dk);}
+.inv-link.g{color:#b8922e;}
+.inv-link:hover{text-decoration:underline;}
+
+/* ═══════════════════════════════════════
+   BOARD RECRUITMENT
+═══════════════════════════════════════ */
+#board{background:var(--navy);}
+.board-h{color:#fff;}
+.board-h em{color:var(--coral);}
+.board-p{color:rgba(255,255,255,.7);}
+.board-note{background:rgba(244,124,81,.15);border:1px solid rgba(244,124,81,.3);border-radius:var(--r);padding:1rem 1.25rem;font-size:14px;color:rgba(255,255,255,.82);line-height:1.65;margin-bottom:1.5rem;}
+.board-note strong{color:var(--coral);}
+.board-roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem;}
+.board-role{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:.85rem 1rem;}
+.br-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px;}
+.br-desc{font-size:11px;color:rgba(255,255,255,.45);line-height:1.5;}
+.volunteer-list{background:rgba(255,255,255,.05);border-radius:var(--r-lg);padding:1.25rem;margin-top:1rem;}
+.vol-list-h{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
+.vol-items{display:flex;flex-wrap:wrap;gap:6px;}
+.vol-item{background:rgba(42,172,184,.15);border:1px solid rgba(42,172,184,.25);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--teal);}
+
+/* ═══════════════════════════════════════
+   SHOP
+═══════════════════════════════════════ */
+#shop{background:var(--navy);}
+.shop-items{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:1.5rem 0;}
+.shop-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:1rem;width:80px;text-align:center;transition:all .2s;}
+.shop-item:hover{background:var(--coral);border-color:var(--coral);}
+.shop-item:hover .shop-lbl{color:#fff;}
+.shop-e{font-size:1.4rem;display:block;margin-bottom:5px;}
+.shop-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);}
+.shop-highlight{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.25);border-radius:var(--r-lg);padding:1.25rem;margin-bottom:1.25rem;}
+.shop-hl-tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:8px;display:block;}
+.shop-hl-h{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.shop-hl-p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.6;margin-bottom:12px;}
+
+/* ═══════════════════════════════════════
+   JOURNALS
+═══════════════════════════════════════ */
+#journals{background:linear-gradient(135deg,#2d5a3d 0%,#1a3a28 100%);position:relative;overflow:hidden;}
+#journals::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 50%,rgba(255,255,255,.04),transparent 60%);}
+.journals-inner{position:relative;z-index:2;}
+.journals-h{color:#fff;}
+.journals-h em{color:#7dd3a8;}
+.journals-p{color:rgba(255,255,255,.65);}
+.journals-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:1.5rem;margin-top:1.25rem;}
+.journals-card-h{font-family:var(--ff-d);font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.journals-card-p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;}
+.pickup-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(125,211,168,.15);border:1px solid rgba(125,211,168,.3);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:700;color:#7dd3a8;margin-top:10px;}
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+#contact{background:var(--white);}
+.contact-list{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+.contact-row{background:var(--cream);border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.contact-row:hover{transform:translateY(-2px);box-shadow:var(--sh);}
+.contact-ico{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ico-t{background:var(--teal-lt);}
+.ico-c{background:var(--coral-lt);}
+.ico-g{background:var(--gray);}
+.contact-lbl{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;}
+.contact-val{font-size:14px;font-weight:700;color:var(--navy);display:block;}
+.socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.75rem;justify-content:center;}
+.social{background:var(--cream);border:1.5px solid var(--gray-mid);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px;transition:all .2s;}
+.social:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{background:#111c24;color:rgba(255,255,255,.4);padding:2.5rem 1.25rem;text-align:center;font-size:12px;line-height:1.9;}
+footer strong{color:rgba(255,255,255,.75);}
+footer a{color:var(--teal);}
+footer a:hover{color:var(--teal-lt);}
+
+/* STICKY DONATE */
+.sticky-donate{position:fixed;bottom:1.25rem;right:1.25rem;z-index:50;transition:opacity .3s;}
+.sticky-donate a{background:var(--coral);color:#fff;border-radius:50px;padding:13px 24px;font-family:var(--ff-b);font-size:14px;font-weight:700;box-shadow:0 4px 24px rgba(244,124,81,.45);text-decoration:none;display:flex;align-items:center;gap:6px;transition:all .2s;}
+.sticky-donate a:hover{background:var(--coral-dk);transform:translateY(-2px);}
+</style>
+</head>
+<body>
+
+<!-- URGENT BAR -->
+<div class="urgent-bar">
+  🚨 Donation button issue fixed — now accepting PayPal directly. <a href="#donate">Help Dobby recover →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">
+    <div class="nav-logo-ring">🐾</div>
+    <div>
+      <div class="nav-name">Legacy Paws Rescue</div>
+      <span class="nav-sub">Catawba, NC · 501(c)(3)</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#dogs">Dogs</a>
+    <a href="#adopt">Adopt</a>
+    <a href="#donate">Donate</a>
+    <a href="#magical-mutts">Magical Mutts</a>
+    <a href="#rainbow">Sanctuary</a>
+    <a href="#involved">Volunteer</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-ctas">
+    <a href="#adopt" class="btn btn-sm btn-outline-n">Adopt</a>
+    <a href="#donate" class="btn btn-sm btn-coral">Donate 💛</a>
+  </div>
+  <button class="ham" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <a href="#mission" onclick="closeDrawer()">Our Mission</a>
+  <a href="#dogs" onclick="closeDrawer()">Meet the Dogs</a>
+  <a href="#adopt" onclick="closeDrawer()">How to Adopt</a>
+  <a href="#donate" onclick="closeDrawer()">Donate</a>
+  <a href="#magical-mutts" onclick="closeDrawer()">Magical Mutts ✨</a>
+  <a href="#rainbow" onclick="closeDrawer()">Rainbow Bridge Sanctuary</a>
+  <a href="#haunted" onclick="closeDrawer()">Haunted Trail 🎃</a>
+  <a href="#involved" onclick="closeDrawer()">Foster & Volunteer</a>
+  <a href="#board" onclick="closeDrawer()">Join Our Board</a>
+  <a href="#shop" onclick="closeDrawer()">Shop</a>
+  <a href="#journals" onclick="closeDrawer()">Journals</a>
+  <a href="#contact" onclick="closeDrawer()">Contact</a>
+  <div class="drawer-cta">
+    <a href="#donate" class="btn btn-lg btn-coral" style="width:100%;justify-content:center;" onclick="closeDrawer()">Donate Now 💛</a>
+    <a href="#adopt" class="btn btn-lg btn-outline-n" style="width:100%;justify-content:center;" onclick="closeDrawer()">Adopt a Dog</a>
+  </div>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero" class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-dog-float">
+    <div class="float-img">🐾</div>
+    <div class="float-badge">Available Now</div>
+    <div class="float-name">Meet Piper</div>
+    <div class="float-sub">AmStaff mix · Adult Female</div>
+    <a href="#dogs" class="btn btn-sm btn-teal" style="width:100%;justify-content:center;font-size:11px;">See Her Profile →</a>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="hero-pulse"></div> Veteran-Owned · Catawba, NC</div>
+    <h1 class="hero-h1">Fixing the<br><em>Human Problem.</em><br>One Dog at a Time.</h1>
+    <p class="hero-p">We rescue the forgotten, rehab the broken, and rehome the ones who were told their time was up. Senior dogs. Special needs. Death row survivors. Every one of them worth it.</p>
+    <div class="hero-btns">
+      <a href="#dogs" class="btn btn-xl btn-coral">Meet Our Dogs 🐾</a>
+      <a href="#donate" class="btn btn-xl btn-outline-w">Support the Mission</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-n">100%</span><span class="stat-l">Rescue-focused</span></div>
+      <div><span class="stat-n">1.5M</span><span class="stat-l">Dogs euthanized yearly</span></div>
+      <div><span class="stat-n">Every</span><span class="stat-l">Dog matters here</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">✅ 501(c)(3) · EIN 33-2211382</div>
+    <div class="trust-item">🎖️ Veteran-Owned</div>
+    <div class="trust-item">🚫 No kill. No compromise.</div>
+    <div class="trust-item">💛 Tax-deductible donations</div>
+    <div class="trust-item">🐾 Sanctuary on-site</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ MISSION ═══════════════════ -->
+<section id="mission">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Our Mission</span>
+      <h2 class="sh">Every overlooked soul deserves to be <em>loved.</em></h2>
+      <p class="sl">We're here for the ones nobody else wanted. The seniors. The broken. The ones on death row. We give them medical care, rehabilitation, and a safe place to heal their trust in humans — and a sanctuary where people can heal alongside them.</p>
+    </div>
+    <div class="mission-quote reveal d1">
+      <p>We're not just rescuing dogs — we're <strong>rewriting their stories.</strong> From heartbreak to hope, from the roadside to the couch. Because every dog, no matter their past, deserves a future filled with love, comfort, and a few too many belly rubs.</p>
+    </div>
+    <div class="pillars reveal d2">
+      <div class="pillar"><span class="pillar-e">🚑</span><div class="pillar-h">Rescue</div><p class="pillar-p">Death row & crisis cases others won't take</p></div>
+      <div class="pillar c"><span class="pillar-e">💊</span><div class="pillar-h">Rehabilitate</div><p class="pillar-p">Medical care, behavioral work, trust-building</p></div>
+      <div class="pillar"><span class="pillar-e">🏠</span><div class="pillar-h">Rehome</div><p class="pillar-p">Careful matching for lasting forever families</p></div>
+      <div class="pillar c"><span class="pillar-e">💛</span><div class="pillar-h">Love</div><p class="pillar-p">Unconditional. Until the very end.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DOGS ═══════════════════ -->
+<section id="dogs">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Meet the Dogs</span>
+      <h2 class="sh">They're waiting. <em>Could it be you?</em></h2>
+      <p class="sl">Every dog here has a story. Every single one of them deserves a chapter that ends with love.</p>
+    </div>
+
+    <!-- DOBBY SPOTLIGHT -->
+    <div class="spotlight reveal d1">
+      <div class="spot-deco"></div><div class="spot-deco2"></div>
+      <div class="spot-inner">
+        <div class="spot-tag"><div class="spot-pulse"></div> Urgent — In Recovery</div>
+        <div class="spot-name">Dobby</div>
+        <div class="spot-breed">Silver Pit Mix · ~1 Year Old · Male · Catawba, NC</div>
+        <p class="spot-copy">Found on the side of the road at barely a year old. He'd spent his entire life in a crate too small to stretch out in — emaciated, contorted, his teeth packed with tartar, stained from being forced to lay in his own waste. He had never been loved. He had never been let outside. In weeks he has gained 12 pounds, his teeth are nearly clean, and he has shown us the gentlest, sweetest soul we have ever met.</p>
+        <div class="prog-wrap">
+          <div class="prog-label"><span>Recovery in progress</span><span>12 lbs gained so far 🐾</span></div>
+          <div class="prog-bg"><div class="prog-fill" id="dobbyBar"></div></div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a href="#donate" class="btn btn-md btn-teal">Sponsor Dobby's Recovery</a>
+          <a href="#donate" class="btn btn-md btn-outline-w" style="font-size:13px;">Donate for His Care</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOG CARDS -->
+    <div class="dogs-grid" style="margin-top:1.25rem;">
+      <div class="dog-card reveal d1">
+        <div class="dog-photo">
+          <div class="dog-status ds-avail">Available</div>🐾
+        </div>
+        <div class="dog-info">
+          <div class="dog-name-row"><div class="dog-name">Piper</div><div class="dog-age">Adult</div></div>
+          <div class="dog-breed">AmStaff / Bulldog Mix · Female</div>
+          <p class="dog-desc">Smart, obedient, and a world-class cuddler. She needs an experienced handler and an only-pet home. Not a dog park girl — she's a <em>you</em> dog, all the way.</p>
+          <div class="dog-traits"><span class="trait">Experienced handler</span><span class="trait">Only pet home</span><span class="trait">Active lifestyle</span><span class="trait">Cuddler</span></div>
+          <a href="https://www.legacypawsrescue.org/adoption-application" target="_blank" class="btn btn-sm btn-navy" style="width:100%;justify-content:center;">Apply to Adopt Piper →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all reveal">
+      <a href="https://www.adoptapet.com/shelter/237080-legacy-paws-rescue-catawaba-north-carolina" target="_blank">View all available dogs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ADOPT ═══════════════════ -->
+<section id="adopt">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Adoption Process</span>
+      <h2 class="sh">Finding your <em>forever match.</em></h2>
+      <p class="sl">We're not looking for the perfect adopter — just the right fit. Every dog here needs something different. Let's find yours.</p>
+    </div>
+    <div class="steps reveal d1">
+      <div class="step"><div class="step-n">1</div><div><div class="step-h">Take the personality quiz</div><p class="step-p">Find out which of our dogs matches your lifestyle, energy, and chaos level.</p></div></div>
+      <div class="step"><div class="step-n">2</div><div><div class="step-h">Submit your application</div><p class="step-p">Tell us about your home and experience. No pressure — just a real conversation.</p></div></div>
+      <div class="step"><div class="step-n">3</div><div><div class="step-h">Meet at their pace</div><p class="step-p">We set up visits on the dog's timeline. Feyre needed six visits. It was worth every one.</p></div></div>
+      <div class="step"><div class="step-n">4</div><div><div class="step-h">Welcome them home</div><p class="step-p">A trial period ensures the fit is right. We're with you every step of the way — and after.</p></div></div>
+    </div>
+    <div class="feyre-quote reveal d2">
+      <p class="feyre-q">"She visited once. Then again. She sniffed every corner, read every room, sized up every person. And then she stayed — not because she had to. Because she chose to."</p>
+      <div class="feyre-meta">
+        <div class="feyre-avi">🐾</div>
+        <div><span class="feyre-who">Feyre — Found Her Forever Home</span><span class="feyre-detail">Six patient visits. One family who showed up every time. She chose them.</span></div>
+      </div>
+    </div>
+    <div class="quiz-cta reveal d3">
+      <div class="quiz-h">Not sure which dog is right for you?</div>
+      <p class="quiz-p">Take our dog personality quiz and find your rescue match — even if we don't have the perfect one yet, you'll know exactly what to look for.</p>
+      <a href="https://www.legacypawsrescue.org/quiz" class="btn btn-md btn-coral">Take the Quiz →</a>
+    </div>
+    <div style="text-align:center;margin-top:1.25rem;" class="reveal">
+      <a href="https://www.legacypawsrescue.org/adoption-application" class="btn btn-lg btn-navy">Apply to Adopt</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DONATE ═══════════════════ -->
+<section id="donate">
+  <div class="inner donate-inner">
+    <div class="reveal">
+      <span class="section-kicker w">Support the Mission</span>
+      <h2 class="sh w">Every dollar is a <em>second chance.</em></h2>
+      <p class="sl w">We're a scrappy 501(c)(3) running on heart, hustle, and the generosity of people like you. Every single dollar goes straight to the dogs.</p>
+    </div>
+
+    <div class="impact-pills reveal d1">
+      <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD" target="_blank" class="impact-pill">$25 — fills a bowl</a>
+      <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD" target="_blank" class="impact-pill">$50 — vet visit</a>
+      <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD" target="_blank" class="impact-pill">$100 — week of care</a>
+    </div>
+
+    <div class="dobby-spot reveal d1">
+      <span class="dobby-spot-tag">Urgent — Sponsor Dobby</span>
+      <div class="dobby-spot-h">Dobby was thrown away at a year old. We're fixing that.</div>
+      <p class="dobby-spot-p">Found on the roadside — emaciated, contorted, never loved. In weeks he's gained 12 lbs and shown us the gentlest soul. He needs your help to finish his journey.</p>
+      <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD" target="_blank" class="btn btn-md btn-teal">Sponsor Dobby via PayPal</a>
+    </div>
+
+    <div class="donate-opts reveal d2">
+      <div class="donate-opt">
+        <div class="donate-opt-h">💛 General Rescue Fund</div>
+        <p class="donate-opt-p">Powers everything — food, vet care, rehab, and the daily love that saves lives.</p>
+        <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD" target="_blank" class="donate-opt-btn">Donate via PayPal</a>
+      </div>
+      <div class="donate-opt">
+        <div class="donate-opt-h">🍽️ Full Belly Fund — $50/month</div>
+        <p class="donate-opt-p">Feed one rescue dog for a month. Quarterly updates and sponsor board recognition.</p>
+        <a href="https://www.paypal.com/donate/?business=LegacyPawsRescue%40gmail.com&currency_code=USD&recurring=1" target="_blank" class="donate-opt-btn dark">Give Monthly</a>
+      </div>
+      <div class="donate-opt">
+        <div class="donate-opt-h">📦 Amazon Wishlist</div>
+        <p class="donate-opt-p">Send beds, bowls, blankets, and tools directly to the rescue. Every item helps.</p>
+        <a href="https://a.co/17Fq1lU" target="_blank" class="donate-opt-btn">Shop Wishlist</a>
+      </div>
+    </div>
+
+    <div class="paypal-notice reveal d3">
+      <strong>Having trouble donating?</strong> Our PayPal buttons above work on all devices. You can also send directly to <a href="mailto:LegacyPawsRescue@gmail.com">LegacyPawsRescue@gmail.com</a> on PayPal or Venmo @LegacyPawsRescue. We are actively fixing the Wix donation form. Thank you for your patience and your generosity.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MAGICAL MUTTS ═══════════════════ -->
+<section id="magical-mutts">
+  <div class="mm-stars"></div>
+  <div class="inner mm-inner">
+    <div class="reveal">
+      <div class="mm-eyebrow">✨ Launching Now</div>
+      <h2 class="mm-h">Introducing<br><em>Magical Mutts™</em></h2>
+      <p class="mm-p">Plush rescue dogs that come to life at night — like Elf on the Shelf, but rooted in real dog psychology, self-love, and healing. Every Magical Mutt directly funds Legacy Paws Rescue.</p>
+    </div>
+
+    <div class="mutts-grid reveal d1">
+      <div class="mutt-card"><span class="mutt-emoji">🐕</span><div class="mutt-name">Chance</div><div class="mutt-magic">Courage & second chances</div><span class="mutt-arch">Adventurer</span></div>
+      <div class="mutt-card"><span class="mutt-emoji">🌟</span><div class="mutt-name">Sunny</div><div class="mutt-magic">Joy & gratitude</div><span class="mutt-arch">Goofy Clown</span></div>
+      <div class="mutt-card"><span class="mutt-emoji">🤍</span><div class="mutt-name">Hope</div><div class="mutt-magic">Healing & belief</div><span class="mutt-arch">Gentle Giant</span></div>
+      <div class="mutt-card"><span class="mutt-emoji">🏡</span><div class="mutt-name">Haven</div><div class="mutt-magic">Safety & belonging</div><span class="mutt-arch">Shy/Nervous</span></div>
+    </div>
+
+    <div class="mm-what reveal d2">
+      <div class="mm-what-h">Each Magical Mutt kit includes:</div>
+      <div class="mm-what-list">
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Plush rescue dog with unique personality and primary magic</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Vow of Magical Companionship adoption certificate with wax seals</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Kindness Cards teaching self-love, empathy, and healthy boundaries</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Magical Missions Cards — safe dog interaction challenges</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Grown-Up Guide with 7-night framework and weekly themes</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> QR code for unlimited printable digital materials</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✦</span> Specialized card decks for hospital kids, foster children & more</div>
+      </div>
+    </div>
+
+    <div class="mm-what reveal d2" style="margin-top:10px;">
+      <div class="mm-what-h">What they teach:</div>
+      <div class="mm-what-list">
+        <div class="mm-what-item"><span class="mm-what-icon">🐾</span> Safe interactions with real dogs · Dog body language · Dog psychology</div>
+        <div class="mm-what-item"><span class="mm-what-icon">💛</span> Self-love and self-worth · Emotional intelligence · Healthy boundaries</div>
+        <div class="mm-what-item"><span class="mm-what-icon">🏥</span> Specialized decks for kids in hospital, foster care, and grief</div>
+        <div class="mm-what-item"><span class="mm-what-icon">✨</span> Responsibility and empathy through playful storytelling + interactive learning</div>
+      </div>
+    </div>
+
+    <div class="mm-launch reveal d3">
+      <strong>Pricing:</strong> Standard Kit $44.99 · Deluxe Kit $54.99 · Hospital/Therapeutic Edition $64.99 · Add-on Card Decks $12.99 each · Collector's Bundle (all 4 mutts) $149.99. Every purchase funds Legacy Paws Rescue operations.
+    </div>
+
+    <div class="mm-btns reveal d3">
+      <a href="https://www.legacypawsrescue.org/shop" class="btn btn-lg btn-gold">Shop Magical Mutts ✨</a>
+      <a href="https://legacypawsrescueshop.etsy.com" target="_blank" class="btn btn-lg btn-outline-w">Shop on Etsy →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RAINBOW BRIDGE ═══════════════════ -->
+<section id="rainbow">
+  <div class="inner rb-inner">
+    <div class="reveal">
+      <span class="section-kicker" style="color:rgba(168,216,240,.7);">The Sanctuary</span>
+      <h2 class="rb-h">Rainbow Bridge <em>Island</em></h2>
+      <p class="rb-p">A sacred space on our property where people come to honor the dogs they've loved and lost — and to heal alongside the dogs who are still here. No adoption pressure. No agenda. Just peace, presence, and unconditional love.</p>
+    </div>
+    <div class="rb-features reveal d1">
+      <div class="rb-feat"><span class="rb-feat-e">🌉</span><div class="rb-feat-h">Rainbow Bridge Island</div><p class="rb-feat-p">Hang collars, tags, photos, and wind chimes on trees and memorial posts. A permanent, peaceful place where love and memory are kept forever.</p></div>
+      <div class="rb-feat"><span class="rb-feat-e">🌿</span><div class="rb-feat-h">The Sanctuary</div><p class="rb-feat-p">Creekside trails, wind chimes in the trees, and quiet reflection spaces. Spend time healing with rescue dogs as your companions.</p></div>
+      <div class="rb-feat"><span class="rb-feat-e">🌸</span><div class="rb-feat-h">The Sensory Garden</div><p class="rb-feat-p">Across the creek, designed to stimulate all five senses for dogs and people alike. A place of calm discovery.</p></div>
+      <div class="rb-feat"><span class="rb-feat-e">🐕</span><div class="rb-feat-h">Companion Visits</div><p class="rb-feat-p">Our rescue dogs walk with you, sit with you, and hold space with you. No pressure. Just presence — the strongest magic of all.</p></div>
+    </div>
+    <div class="chester-memorial reveal d2">
+      <p class="chester-q">"Sometimes the most important thing we do is make sure a dog never spends another day in pain, alone, or unloved. Chester taught us that."</p>
+      <div class="chester-meta">🌈 Chester — rescued, loved for six months, and held until the very end. March 2026. He is remembered here.</div>
+    </div>
+    <div style="margin-top:1.25rem;" class="reveal d3">
+      <a href="https://www.legacypawsrescue.org/memorials" class="btn btn-md btn-outline-w">Visit Our Memorial Garden →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HAUNTED TRAIL ═══════════════════ -->
+<section id="haunted">
+  <div class="inner haunt-inner">
+    <div class="reveal">
+      <span class="section-kicker" style="color:rgba(244,124,81,.7);">Annual October Event</span>
+      <h2 class="haunt-h">The Legacy Paws<br><em>Haunted Trail</em></h2>
+      <p class="haunt-p">Blair Witch style. Flashlights only. Very scary. Dogs welcome. Ends with a bonfire and marshmallow roast. The most unique haunted experience in NC — and it funds rescue operations.</p>
+    </div>
+    <div class="haunt-date reveal d1">🎃 Coming October 2025 — Donation Only Entry</div>
+    <div class="haunt-features reveal d1">
+      <div class="haunt-feat"><span class="haunt-feat-e">🔦</span><div class="haunt-feat-h">Flashlight only</div><p class="haunt-feat-p">Through the woods in the dark. Blair Witch-style filming encouraged.</p></div>
+      <div class="haunt-feat"><span class="haunt-feat-e">🐕</span><div class="haunt-feat-h">Dog scent work</div><p class="haunt-feat-p">Your dog can participate — trail includes canine scent challenges.</p></div>
+      <div class="haunt-feat"><span class="haunt-feat-e">👻</span><div class="haunt-feat-h">Very scary spooks</div><p class="haunt-feat-p">Real frights throughout the trail. Not for the faint of heart.</p></div>
+      <div class="haunt-feat"><span class="haunt-feat-e">🔥</span><div class="haunt-feat-h">Bonfire finale</div><p class="haunt-feat-p">Trail ends at a bonfire with marshmallow roast. Come survive together.</p></div>
+    </div>
+    <div class="reveal d2" style="text-align:center;">
+      <a href="https://www.legacypawsrescue.org/getinvolved" class="btn btn-lg btn-coral">Get Notified When Tickets Open →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STORIES ═══════════════════ -->
+<section id="stories">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Success Stories</span>
+      <h2 class="sh">This is what it's <em>all about.</em></h2>
+      <p class="sl">Every adopted dog is proof the mission works. Every one of these moments is why we do this.</p>
+    </div>
+    <div class="stories-list">
+      <div class="story reveal d1">
+        <span class="story-tag">🏠 Forever Home · Adoption Story</span>
+        <p class="story-q">"She visited once. Then again. She sniffed every corner, read every room, sized up every person. And then she stayed — not because she had to. Because she chose to. Because they had earned it."</p>
+        <div class="story-meta"><div class="story-avi avi-c">🐾</div><div><span class="story-who">Feyre — Found Her Forever Home</span><span class="story-detail">Came from our largest rescue with severe trust issues. Six patient visits. One perfect family. She's home.</span></div></div>
+      </div>
+      <div class="story tl reveal d2">
+        <span class="story-tag" style="color:var(--teal-dk);">🌱 Recovery in Progress · Dobby's Journey</span>
+        <p class="story-q">"He arrived with nothing — no muscle, no trust, no one. Today he has gained 12 pounds, learned his name, and shown us a soul so gentle it breaks your heart open in the best possible way."</p>
+        <div class="story-meta"><div class="story-avi avi-t">🐾</div><div><span class="story-who">Dobby — Rising</span><span class="story-detail">Found on the roadside at 1 year old. His comeback story is just beginning.</span></div></div>
+      </div>
+      <div class="story rb reveal d3">
+        <span class="story-tag" style="color:#6495ed;">🌈 Rainbow Bridge · In Our Hearts</span>
+        <p class="story-q">"Sometimes the most important thing we do is make sure a dog never spends another day in pain, alone, or unloved. Chester taught us that. He died held, at peace, with people who showed up for him every single day."</p>
+        <div class="story-meta"><div class="story-avi avi-rb">🌈</div><div><span class="story-who">Chester — Loved Until the Very End</span><span class="story-detail">Six months of surgery, rehab, and unconditional love. His light still burns here.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ GET INVOLVED ═══════════════════ -->
+<section id="involved">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Get Involved</span>
+      <h2 class="sh">We need hands, hearts, <em>and hustle.</em></h2>
+      <p class="sl">Whether you can give a dog a temporary home or just a Saturday afternoon — there's a place for you in this mission.</p>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card reveal d1"><span class="inv-e">🏠</span><div class="inv-h">Become a Foster</div><p class="inv-p">Give a dog a safe, loving home while they heal and wait for their forever family.</p><a href="https://www.legacypawsrescue.org/getinvolved" class="inv-link">Get started →</a></div>
+      <div class="inv-card c reveal d2"><span class="inv-e">🙌</span><div class="inv-h">Volunteer</div><p class="inv-p">Dog care, trail work, events, marketing, admin. If you have time and heart, we have a spot.</p><a href="https://www.legacypawsrescue.org/getinvolved" class="inv-link c">Sign up →</a></div>
+      <div class="inv-card c reveal d1"><span class="inv-e">🎉</span><div class="inv-h">Fundraise</div><p class="inv-p">Birthday drives, bake sales, Jeep rallies — whatever your style, you can save lives doing it.</p><a href="https://www.legacypawsrescue.org/getinvolved" class="inv-link c">Start one →</a></div>
+      <div class="inv-card reveal d2"><span class="inv-e">📣</span><div class="inv-h">Spread the Word</div><p class="inv-p">Share our stories. Tag a friend. Follow us. Sometimes refusing to look away is everything.</p><a href="#contact" class="inv-link">Follow us →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ BOARD ═══════════════════ -->
+<section id="board">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker w">Join Our Executive Board</span>
+      <h2 class="sh w">We're building a <em>team.</em></h2>
+    </div>
+    <div class="board-note reveal d1">
+      <strong>An honest ask:</strong> Legacy Paws Rescue is run by one person who belongs in the mud with the dogs — not behind a laptop at midnight. We are actively building an executive board and skilled volunteer team so we can grow this mission without burning the one person holding it together. If you have skills and heart, <strong>we need you.</strong>
+    </div>
+    <div class="board-roles reveal d2">
+      <div class="board-role"><div class="br-title">Board Chair</div><div class="br-desc">Leadership, governance, strategic direction</div></div>
+      <div class="board-role"><div class="br-title">Grant Writer</div><div class="br-desc">Most urgent need — Petco Love, Maddie's Fund, more</div></div>
+      <div class="board-role"><div class="br-title">Marketing Director</div><div class="br-desc">Social media, ads, brand, content strategy</div></div>
+      <div class="board-role"><div class="br-title">Fundraising Chair</div><div class="br-desc">Campaigns, events, major donor relationships</div></div>
+      <div class="board-role"><div class="br-title">Nonprofit Attorney</div><div class="br-desc">Legal, trademark, compliance, governance</div></div>
+      <div class="board-role"><div class="br-title">Event Coordinator</div><div class="br-desc">Haunted Trail, fundraisers, community events</div></div>
+      <div class="board-role"><div class="br-title">Veterinary Advisor</div><div class="br-desc">Medical guidance, vet partnerships, care protocols</div></div>
+      <div class="board-role"><div class="br-title">Social Media Manager</div><div class="br-desc">2-3 hrs/week — posting, engagement, stories</div></div>
+    </div>
+    <div class="volunteer-list reveal d3">
+      <div class="vol-list-h">Also looking for skilled volunteers in:</div>
+      <div class="vol-items">
+        <span class="vol-item">Dog care</span>
+        <span class="vol-item">Trail & fence work</span>
+        <span class="vol-item">Photography</span>
+        <span class="vol-item">Web / tech</span>
+        <span class="vol-item">Admin support</span>
+        <span class="vol-item">Transport</span>
+        <span class="vol-item">Foster coordination</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem;" class="reveal">
+      <a href="mailto:LegacyPawsRescue@gmail.com" class="btn btn-lg btn-coral">Express Interest →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SHOP ═══════════════════ -->
+<section id="shop">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker w">Shop for a Cause</span>
+      <h2 class="sh w">Wear it loud. <em>Save some paws.</em></h2>
+      <p class="sl w">Every shirt, hoodie, candle, and journal funds our rescue work directly. Look good. Do good. Get dog hair on it.</p>
+    </div>
+    <div class="shop-highlight reveal d1">
+      <span class="shop-hl-tag">⭐ Best Seller — Available Now</span>
+      <div class="shop-hl-h">Legacy Paws 2027 Dog Calendar</div>
+      <p class="shop-hl-p">Twelve months. Twelve dogs. Twelve stories of survival and love. Real rescue dogs — Piper, Dobby, Feyre, and more — paw-signed on-site. Available for pickup at the rescue or shipped to you.</p>
+      <a href="https://www.legacypawsrescue.org/shop" class="btn btn-md btn-gold">Get Your Calendar →</a>
+    </div>
+    <div class="shop-items reveal d2">
+      <div class="shop-item"><span class="shop-e">👕</span><span class="shop-lbl">Apparel</span></div>
+      <div class="shop-item"><span class="shop-e">🧥</span><span class="shop-lbl">Hoodies</span></div>
+      <div class="shop-item"><span class="shop-e">🕯️</span><span class="shop-lbl">Candles</span></div>
+      <div class="shop-item"><span class="shop-e">📓</span><span class="shop-lbl">Journals</span></div>
+      <div class="shop-item"><span class="shop-e">☕</span><span class="shop-lbl">Mugs</span></div>
+      <div class="shop-item"><span class="shop-e">🧢</span><span class="shop-lbl">Hats</span></div>
+      <div class="shop-item"><span class="shop-e">🛍️</span><span class="shop-lbl">Totes</span></div>
+      <div class="shop-item"><span class="shop-e">🏷️</span><span class="shop-lbl">Stickers</span></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;" class="reveal d3">
+      <a href="https://www.legacypawsrescue.org/shop" class="btn btn-lg btn-coral">Shop Legacy Paws →</a>
+      <a href="https://legacypawsrescueshop.etsy.com" target="_blank" class="btn btn-lg btn-outline-w">Shop on Etsy →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ JOURNALS ═══════════════════ -->
+<section id="journals">
+  <div class="inner journals-inner">
+    <div class="reveal">
+      <span class="section-kicker" style="color:rgba(125,211,168,.7);">Journaling is for the Dogs</span>
+      <h2 class="sh journals-h">Heal a little. <em>Help a lot.</em></h2>
+      <p class="sl journals-p">A self-published series of journals based on Erik Erikson's developmental stages — thoughtfully designed for reflection, growth, and healing. Every journal sold directly funds Legacy Paws Rescue.</p>
+    </div>
+    <div class="journals-card reveal d1">
+      <div class="journals-card-h">Pick yours up at the rescue</div>
+      <p class="journals-card-p">Come meet the dogs while you browse. Journals and calendars are available for pickup on-site — and while you're here, you can get your calendar paw-signed by one of our rescue dogs. It's an experience, not just a purchase.</p>
+      <div class="pickup-badge">🐾 Paw-signed calendars available on-site</div>
+    </div>
+    <div class="reveal d2" style="text-align:center;margin-top:1.25rem;">
+      <a href="https://www.legacypawsrescue.org/shop" class="btn btn-md" style="background:#7dd3a8;color:#1a3a28;">Browse the Journal Collection →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact">
+  <div class="inner">
+    <div class="reveal">
+      <span class="section-kicker">Contact</span>
+      <h2 class="sh">We'd love to <em>hear from you.</em></h2>
+      <p class="sl">Questions about adopting, fostering, volunteering, or Magical Mutts? We're real people who answer real messages.</p>
+    </div>
+    <div class="contact-list reveal d1">
+      <a href="tel:3184223750" class="contact-row"><div class="contact-ico ico-t">📞</div><div><span class="contact-lbl">Phone</span><span class="contact-val">(318) 422-3750</span></div></a>
+      <a href="mailto:LegacyPawsRescue@gmail.com" class="contact-row"><div class="contact-ico ico-c">✉️</div><div><span class="contact-lbl">Email</span><span class="contact-val">LegacyPawsRescue@gmail.com</span></div></a>
+      <div class="contact-row"><div class="contact-ico ico-g">📍</div><div><span class="contact-lbl">Location</span><span class="contact-val">Catawba, NC 28609</span></div></div>
+      <a href="https://www.legacypawsrescue.org" target="_blank" class="contact-row"><div class="contact-ico ico-t">🌐</div><div><span class="contact-lbl">Website</span><span class="contact-val">legacypawsrescue.org</span></div></a>
+    </div>
+    <div class="socials reveal d2">
+      <a href="https://www.facebook.com/legacypawsrescue/" target="_blank" class="social">📘 Facebook</a>
+      <a href="https://www.instagram.com/legacypawsrescue/" target="_blank" class="social">📸 Instagram</a>
+      <a href="https://www.tiktok.com/@legacypaws" target="_blank" class="social">🎵 TikTok</a>
+      <a href="https://www.youtube.com/@LegacyPawsRescue" target="_blank" class="social">▶️ YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <strong>Legacy Paws Rescue</strong><br>
+  501(c)(3) Nonprofit &nbsp;·&nbsp; EIN: 33-2211382 &nbsp;·&nbsp; Veteran-Owned &nbsp;·&nbsp; Catawba, NC 28609<br>
+  All donations are tax-deductible to the extent allowed by law.<br><br>
+  <a href="https://www.legacypawsrescue.org">legacypawsrescue.org</a> &nbsp;·&nbsp;
+  <a href="mailto:LegacyPawsRescue@gmail.com">LegacyPawsRescue@gmail.com</a> &nbsp;·&nbsp;
+  <a href="tel:3184223750">(318) 422-3750</a><br><br>
+  <em style="color:rgba(255,255,255,.25);">Fixing the Human Problem. One Dog at a Time. 🐾</em>
+</footer>
+
+<!-- STICKY DONATE -->
+<div class="sticky-donate" id="stickyDonate">
+  <a href="#donate">💛 Donate</a>
+</div>
+
+<script>
+/* DRAWER */
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');}
+document.addEventListener('click',e=>{
+  const d=document.getElementById('drawer');
+  if(d.classList.contains('open')&&!d.contains(e.target)&&!document.querySelector('.ham').contains(e.target))closeDrawer();
+});
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* DOBBY PROGRESS BAR */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.getElementById('dobbyBar').style.width='40%';
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+const bar=document.getElementById('dobbyBar');
+if(bar)barObs.observe(bar.closest('.spotlight'));
+
+/* STICKY DONATE — hide when in donate section */
+const donateSec=document.getElementById('donate');
+const sticky=document.getElementById('stickyDonate');
+const dObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    sticky.style.opacity=e.isIntersecting?'0':'1';
+    sticky.style.pointerEvents=e.isIntersecting?'none':'all';
+  });
+},{threshold:.15});
+if(donateSec)dObs.observe(donateSec);
+</script>
+</body>
+</html>
